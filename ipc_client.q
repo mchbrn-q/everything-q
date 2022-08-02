@@ -51,4 +51,3 @@ h1(get;`list1)
 
 // send the expression 2*2 to the server asynchronously
 (neg h1)"2*2"
-(neg h1)(`f;2;
