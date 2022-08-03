@@ -38,3 +38,7 @@ list1:12 8 10 9 2
 
 // stop listening to port
 \p 0
+
+// push data received asynchronously to a table that logs time and value of request
+tab:([]time:();result:()};
+.z.ps:{`tab insert (.z.p;.Q.s1 value x)}
