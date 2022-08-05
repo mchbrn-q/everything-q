@@ -52,8 +52,25 @@ h1(get;`list1);
 // send the expression 2*2 to the server asynchronously
 (neg h1)"2*2";
 
-// ensure that all synchronous messages have been processed
+// run a function defined on the server asynchronously
+(neg h)(`f;4)
+
+// define a list on the server asynchronously
+(neg h1)"list2:4 2 4 2"
+
+// to ensure that all async messages have been processed
+// chase with a sync message
 h1"";
 
 // flush the queue
-(neg h)[];
+(neg h1)[];
+// or
+neg[h1](::)
+
+// show a message on the server eight times every three seconds
+f:{show .z.p}
+flush2:{(neg h)(f;`);(neg h)[];now:.z.p;while[.z.p<now+0D00:00:03;()]
+do[8;flush2[]]
+
+// ensure an async message has been sent immediately
+neg[h1]x; neg[h][];

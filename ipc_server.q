@@ -14,6 +14,9 @@ permitted_users:`Matthew`Jordan`Michael;
 // reset the .z.pw message handler
 \x .z.pw;
 
+// add password checking on users by loading users.txt
+// $q -u user.txt
+
 // show the ip address, current datetime, user and the handle number on every new connection to server
 .z.po:{show (.z.a;.z.p;.z.u;x)}
 
