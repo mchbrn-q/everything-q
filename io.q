@@ -78,7 +78,7 @@ price
 // the syms and indices are contained within the sym file
 
 // create a table with sym columns 
-mensa:([]case_names:`nominative`vocative`accusative`genitive`dative`ablative;singular:`mensa`mensa`mensam`mensae`mensae`mensa;plural:`mensae`mensae`mensas`mensarum`mensis`mensis)
+mensa:([]case_name:`nominative`vocative`accusative`genitive`dative`ablative;singular:`mensa`mensa`mensam`mensae`mensae`mensa;plural:`mensae`mensae`mensas`mensarum`mensis`mensis)
 
 // saved it as a partitioned table
 `:latin/mensa/ set .Q.en[`:latin;mensa]
@@ -86,3 +86,12 @@ mensa:([]case_names:`nominative`vocative`accusative`genitive`dative`ablative;sin
 // load partitioned sym table back into memory
 load `:latin/mensa
 mensa
+
+// to save a splayed table into a database partition use .Q.dpft
+// the table has to be define in the global namespace to use this function
+// arguments are db directory, db partition, the column to sort and apply parted attribute to and table
+.Q.dpft[`:hdb;2020.08.10;`case_name;`mensa]
+
+// save all tables defined in the global namespace to historical database and purge all data in the tables
+// 0 is the historical port and `fruit is the enumerated column
+.Q.hdpf[0;`:hdb;2020.08.11;`fruit]
